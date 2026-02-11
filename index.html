@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Miniature Autonomous Submarine Dashboard</title>
+
+    <!-- Main stylesheet -->
+    <link rel="stylesheet" href="css/style.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons+Round"
+    />
+
+    <!-- Leaflet styles and JS (for map) -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+      integrity="sha256-sA+e2at3bP42H0SgXk3ZKpMZtA6Y+YB6N9gENbWgQ3s="
+      crossorigin=""
+    />
+    <script
+      src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+      integrity="sha256-o9N1j7kGStbE0kZuwZQ5QHWuZbM5H0p1p3pbbQ+4o8k="
+      crossorigin=""
+    ></script>
+
+    <!-- Chart.js (ready for future charts) -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body>
+    <div class="app-shell">
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <div class="sidebar-header">
+          <img
+            src="assets/logo3.png"
+            alt="Submarine Logo"
+            class="sidebar-logo"
+          />
+          <div class="sidebar-title-block">
+            <h1 class="sidebar-title">Submarine Dashboard</h1>
+            <p class="sidebar-subtitle">
+              Miniature Autonomous Submarine - KFUPM
+            </p>
+          </div>
+        </div>
+
+        <nav class="sidebar-nav">
+          <ul>
+            <li>
+              <button class="nav-link is-active" data-section-target="home">
+                <span class="nav-icon material-icons-round">home</span>
+                <span class="nav-label">Home</span>
+              </button>
+            </li>
+            <li>
+              <button class="nav-link" data-section-target="sensors">
+                <span class="nav-icon material-icons-round">sensors</span>
+                <span class="nav-label">Sensor Data</span>
+              </button>
+            </li>
+            <li>
+              <button class="nav-link" data-section-target="ai">
+                <span class="nav-icon material-icons-round">psychology</span>
+                <span class="nav-label">AI Detection</span>
+              </button>
+            </li>
+            <li>
+              <button class="nav-link" data-section-target="controls">
+                <span class="nav-icon material-icons-round">settings_remote</span>
+                <span class="nav-label">Controls</span>
+              </button>
+            </li>
+            <li>
+              <button class="nav-link" data-section-target="logs">
+                <span class="nav-icon material-icons-round">receipt_long</span>
+                <span class="nav-label">Data Logs</span>
+              </button>
+            </li>
+          </ul>
+        </nav>
+
+        <div class="sidebar-footer">
+          <p class="sidebar-footer-text">Senior Design Project - 2024-2025</p>
+        </div>
+      </aside>
+
+      <!-- Main content -->
+      <main class="main">
+        <header class="main-header">
+          <div>
+            <h2 class="main-page-title" id="page-title">Home</h2>
+            <p class="main-page-subtitle" id="page-subtitle">
+              Overview of the Miniature Autonomous Submarine and the project
+              team.
+            </p>
+          </div>
+        </header>
+
+        <!-- HOME -->
+        <section id="home" class="page-section is-active" data-section="home">
+          <div class="home-grid">
+            <article class="panel home-hero">
+              <div class="home-hero-text">
+                <p class="pill">Miniature Autonomous Submarine</p>
+                <h3>AI-powered underwater inspection</h3>
+                <p class="home-hero-description">
+                  An affordable, autonomous submarine designed for underwater
+                  structural monitoring and environmental assessment. This
+                  dashboard brings together live telemetry, AI crack detection,
+                  and mission logs in a single view.
+                </p>
+              </div>
+              <div class="home-hero-media">
+                <img
+                  src="assets/logo3.png"
+                  alt="Submarine Illustration"
+                  class="home-logo"
+                />
+              </div>
+            </article>
+
+            <article class="panel">
+              <h3>Project Highlights</h3>
+              <ul class="bullet-list">
+                <li>Real-time telemetry streaming from onboard sensors.</li>
+                <li>AI-based crack detection on underwater structures.</li>
+                <li>Mission log viewer with full sensor history.</li>
+                <li>Interactive map view for submarine position.</li>
+              </ul>
+            </article>
+          </div>
+
+          <section class="panel home-team">
+            <header class="section-header">
+              <div>
+                <h3>Project Team</h3>
+                <p class="section-subtitle">
+                  The multidisciplinary team behind the submarine.
+                </p>
+              </div>
+            </header>
+
+            <div class="team-grid">
+              <div class="team-card">
+                <img src="assets/Zahid.jpg" alt="Zahid Alabadllah" />
+                <p class="team-name">Zahid Alabadllah</p>
+                <p class="team-role">Computer Science</p>
+              </div>
+
+              <div class="team-card">
+                <img src="assets/Ali.jpg" alt="Ali Abdalla" />
+                <p class="team-name">Ali Abdalla</p>
+                <p class="team-role">Mechanical Engineering</p>
+              </div>
+
+              <div class="team-card">
+                <img src="assets/Osama.jpg" alt="Osama Balubaid" />
+                <p class="team-name">Osama Balubaid</p>
+                <p class="team-role">Mechanical Engineering</p>
+              </div>
+
+              <div class="team-card">
+                <img src="assets/Almamoun.jpg" alt="Almamoun Alhazmi" />
+                <p class="team-name">Almamoun Alhazmi</p>
+                <p class="team-role">Civil Engineering</p>
+              </div>
+
+              <div class="team-card">
+                <img src="assets/Badr.png" alt="Badr AlArefiy" />
+                <p class="team-name">Badr AlArefiy</p>
+                <p class="team-role">Electrical Engineering</p>
+              </div>
+
+              <div class="team-card">
+                <img src="assets/Tamer.jpg" alt="Tamer Rustom" />
+                <p class="team-name">Tamer Rustom</p>
+                <p class="team-role">Civil Engineering</p>
+              </div>
+            </div>
+          </section>
+        </section>
+
+        <!-- SENSORS -->
+        <section id="sensors" class="page-section" data-section="sensors">
+          <header class="section-header">
+            <div>
+              <h3>Sensor Data Replay</h3>
+              <p class="section-subtitle">
+                Recorded telemetry replayed with deterministic timing.
+              </p>
+            </div>
+            <div class="section-meta-group">
+              <span class="status-pill status-pill-replay">REPLAY: Logs Rotating</span>
+              <span class="section-meta" id="telemetry-mode">data_mode: replay</span>
+              <span class="section-meta">
+                Cycle:
+                <span id="telemetry-cycle">0</span>,
+                Entry
+                <span id="telemetry-entry">0</span>/<span id="telemetry-total">0</span>
+              </span>
+              <span class="section-meta">
+                Last update:
+                <span id="telemetry-updated">Waiting for data...</span>
+              </span>
+            </div>
+          </header>
+
+          <div class="metrics-grid">
+            <article class="metric-card">
+              <p class="metric-label">Temperature</p>
+              <p class="metric-value">
+                <span id="temp">--</span>
+                <span class="metric-unit">&deg;C</span>
+              </p>
+            </article>
+
+            <article class="metric-card">
+              <p class="metric-label">Pressure</p>
+              <p class="metric-value">
+                <span id="pressure">--</span>
+                <span class="metric-unit">kPa</span>
+              </p>
+            </article>
+
+            <article class="metric-card">
+              <p class="metric-label">Depth</p>
+              <p class="metric-value">
+                <span id="depth">--</span>
+                <span class="metric-unit">m</span>
+              </p>
+            </article>
+
+            <article class="metric-card">
+              <p class="metric-label">Speed</p>
+              <p class="metric-value">
+                <span id="groundspeed">--</span>
+                <span class="metric-unit">kn</span>
+              </p>
+            </article>
+
+            <article class="metric-card">
+              <p class="metric-label">Latitude</p>
+              <p class="metric-value">
+                <span id="latitude">--</span>
+              </p>
+            </article>
+
+            <article class="metric-card">
+              <p class="metric-label">Longitude</p>
+              <p class="metric-value">
+                <span id="longitude">--</span>
+              </p>
+            </article>
+
+            <article class="metric-card">
+              <p class="metric-label">Battery</p>
+              <p class="metric-value">
+                <span id="battery">--</span>
+              </p>
+            </article>
+
+            <article class="metric-card">
+              <p class="metric-label">Flight Time</p>
+              <p class="metric-value">
+                <span id="flight_time">--</span>
+              </p>
+            </article>
+          </div>
+
+          <div class="two-column">
+            <article class="panel">
+              <div class="map-panel-header">
+                <div>
+                  <h4>Position and Map</h4>
+                  <p class="panel-text">
+                    Reference: KFUPM, Dhahran (Eastern Province).
+                  </p>
+                </div>
+                <label class="map-mode">
+                  <span>Mode</span>
+                  <select id="map-mode">
+                    <option value="telemetry">Telemetry View</option>
+                    <option value="mission">Mission Path</option>
+                  </select>
+                </label>
+              </div>
+              <div class="map-panel overlay-frame" id="map-shell">
+                <div id="map" class="map-canvas"></div>
+                <div class="map-overlay" id="map-overlay">
+                  <div class="map-ring"></div>
+                  <div class="map-marker">
+                    <div class="map-marker-dot"></div>
+                    <div class="map-marker-label">KFUPM-AUV</div>
+                  </div>
+                </div>
+              </div>
+              <p class="section-meta" id="last-seen">Last Time Seen: --</p>
+            </article>
+
+            <article class="panel">
+              <h4>Attitude and Heading</h4>
+              <div class="attitude-grid">
+                <div class="attitude-block">
+                  <p class="metric-label">Roll</p>
+                  <p class="metric-value">
+                    <span id="roll">--</span>
+                <span class="metric-unit">&deg;</span>
+                  </p>
+                </div>
+                <div class="attitude-block">
+                  <p class="metric-label">Pitch</p>
+                  <p class="metric-value">
+                    <span id="pitch">--</span>
+                <span class="metric-unit">&deg;</span>
+                  </p>
+                </div>
+                <div class="attitude-block">
+                  <p class="metric-label">Yaw</p>
+                  <p class="metric-value">
+                    <span id="yaw">--</span>
+                <span class="metric-unit">&deg;</span>
+                  </p>
+                </div>
+              </div>
+
+              <div class="compass-card">
+                <p class="metric-label">Heading</p>
+                <div class="compass-widget">
+                  <div class="compass-face">
+                    <div class="compass-ring"></div>
+                    <div class="compass-ring compass-ring-inner"></div>
+                    <div class="compass-label compass-n">N</div>
+                    <div class="compass-label compass-s">S</div>
+                    <div class="compass-label compass-w">W</div>
+                    <div class="compass-label compass-e">E</div>
+                    <div class="compass-needle" id="compass-needle">
+                      <span class="compass-needle-tip"></span>
+                      <span class="compass-needle-shaft"></span>
+                      <span class="compass-needle-base"></span>
+                    </div>
+                    <div class="compass-center">
+                      <span class="compass-center-label">Heading</span>
+                      <span class="compass-center-value" id="heading-value">--</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- AI -->
+        <section id="ai" class="page-section" data-section="ai">
+          <header class="section-header">
+            <div>
+              <h3>AI Crack Detection</h3>
+              <p class="section-subtitle">
+                Sample output of the onboard model detecting cracks in
+                underwater structures.
+              </p>
+            </div>
+          </header>
+
+          <article class="panel">
+            <div class="video-header">
+              <p class="video-title">Detection output</p>
+              <p class="section-meta">
+                Source:
+                <code>assets/genAI_detected_cracks2_encoded.mp4</code>
+                <span class="video-meta" id="video-meta"></span>
+              </p>
+            </div>
+
+            <div class="video-frame overlay-frame">
+              <video id="detection-video" controls autoplay loop muted>
+                <source
+                  src="assets/genAI_detected_cracks2_encoded.mp4"
+                  type="video/mp4"
+                />
+                Your browser does not support the video tag.
+              </video>
+              <div class="scanline"></div>
+              <div class="overlay-badges">
+                <span class="badge">
+                  <span class="badge-dot"></span>
+                  Replay Feed
+                </span>
+                <span class="badge">AI Detection Active</span>
+              </div>
+              <div class="reticle">
+                <svg viewBox="0 0 100 100" aria-hidden="true">
+                  <circle
+                    cx="50"
+                    cy="50"
+                    r="44"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-dasharray="4 4"
+                    stroke-width="0.6"
+                  ></circle>
+                  <line
+                    x1="50"
+                    y1="0"
+                    x2="50"
+                    y2="10"
+                    stroke="currentColor"
+                    stroke-width="0.8"
+                  ></line>
+                  <line
+                    x1="50"
+                    y1="90"
+                    x2="50"
+                    y2="100"
+                    stroke="currentColor"
+                    stroke-width="0.8"
+                  ></line>
+                  <line
+                    x1="0"
+                    y1="50"
+                    x2="10"
+                    y2="50"
+                    stroke="currentColor"
+                    stroke-width="0.8"
+                  ></line>
+                  <line
+                    x1="90"
+                    y1="50"
+                    x2="100"
+                    y2="50"
+                    stroke="currentColor"
+                    stroke-width="0.8"
+                  ></line>
+                </svg>
+              </div>
+            </div>
+          </article>
+        </section>
+
+        <!-- CONTROLS -->
+        <section id="controls" class="page-section" data-section="controls">
+          <header class="section-header">
+            <div>
+              <h3>Submarine Controls</h3>
+              <p class="section-subtitle">
+                Connect a DualShock 4 controller to explore input mapping.
+              </p>
+            </div>
+          </header>
+
+          <div class="two-column">
+            <article class="panel">
+              <h4>Gamepad Status</h4>
+              <div id="gamepad-status" class="gamepad-status">
+                <p>
+                  Connect your PS4 controller via USB or Bluetooth to see live
+                  input data here.
+                </p>
+              </div>
+            </article>
+
+            <article class="panel">
+              <h4>Virtual Controller View</h4>
+              <p class="panel-text">
+                The virtual controller mirrors your inputs in real time.
+              </p>
+              <iframe
+                id="virtual-controller"
+                src="https://html5gamepad.com/"
+                class="controller-iframe"
+              ></iframe>
+            </article>
+          </div>
+        </section>
+
+        <!-- LOGS -->
+        <section id="logs" class="page-section" data-section="logs">
+          <header class="section-header">
+            <div>
+              <h3>Sensor Data Logs</h3>
+              <p class="section-subtitle">
+                Historical sensor readings from previous missions.
+              </p>
+            </div>
+            <div class="section-meta-group">
+              <span class="status-pill status-pill-replay">REPLAY: Coherent Stream</span>
+              <span class="section-meta" id="logs-meta">data_mode: replay</span>
+              <span class="section-meta">
+                Logs updated:
+                <span id="logs-updated">Waiting...</span>
+              </span>
+            </div>
+          </header>
+
+          <div class="log-toolbar">
+            <div class="log-toolbar-left">
+              <span class="log-badge" id="log-cycle">Cycle 1</span>
+              <span class="log-badge" id="log-phase">Phase: Transit</span>
+              <span class="log-badge" id="log-sample-rate">Sample: 1 Hz</span>
+            </div>
+            <div class="log-toolbar-right">
+              <button class="log-export" id="export-csv">Export CSV</button>
+              <button class="log-export" id="export-jsonl">Export JSONL</button>
+            </div>
+          </div>
+          <p class="log-schema" id="log-schema"></p>
+
+          <article class="panel panel-table">
+            <div class="table-wrapper">
+              <table id="log-table">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Timestamp</th>
+                    <th>Cycle</th>
+                    <th>Phase</th>
+                    <th>Status</th>
+                    <th>Warnings</th>
+                    <th>Temperature (&deg;C)</th>
+                    <th>Pressure (kPa)</th>
+                    <th>Depth (m)</th>
+                    <th>Latitude</th>
+                    <th>Longitude</th>
+                    <th>Roll</th>
+                    <th>Pitch</th>
+                    <th>Yaw</th>
+                    <th>Heading</th>
+                    <th>Speed (kn)</th>
+                    <th>Battery</th>
+                    <th>Flight Time</th>
+                  </tr>
+                </thead>
+                <tbody id="log-body">
+                  <tr>
+                    <td colspan="18" class="table-placeholder">
+                      Waiting for log data...
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </article>
+        </section>
+      </main>
+    </div>
+
+    <!-- Scripts at the end for better performance -->
+    <script src="js/main.js"></script>
+    <script src="js/sensors.js"></script>
+    <script src="js/ai.js"></script>
+    <script src="js/controls.js"></script>
+    <script src="js/logs.js"></script>
+  </body>
+</html>
