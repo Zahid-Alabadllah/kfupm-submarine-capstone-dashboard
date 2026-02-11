@@ -1,23 +1,33 @@
 ﻿# KFUPM Submarine Capstone Dashboard
 
-A senior design project by **KFUPM** students focused on building a miniature autonomous submarine dashboard for mission replay, telemetry review, and AI-assisted inspection.
+![Status](https://img.shields.io/badge/status-active-22c55e?style=for-the-badge)
+![Capstone](https://img.shields.io/badge/type-capstone-0ea5e9?style=for-the-badge)
+![Made](https://img.shields.io/badge/made_with-HTML%2FCSS%2FJS-13c8ec?style=for-the-badge)
+![Mapping](https://img.shields.io/badge/maps-Leaflet%20%2B%20OpenStreetMap-10b981?style=for-the-badge)
 
-## What This Project Is
-This project explores the interface layer of an autonomous submarine system. It provides a cohesive, operator‑ready UI for:
-- Sensor telemetry replay with deterministic timing
-- Mission log streams with coherent navigation paths
-- AI detection playback and status overlays
-- Operator controls and system visualization
+A senior design project by **KFUPM** students focused on a miniature autonomous submarine dashboard for telemetry replay, mission log review, and AI‑assisted inspection playback.
 
-## Why It Matters
-Autonomous underwater vehicles require clear, resilient interfaces. This dashboard prioritizes situational awareness, reproducible telemetry playback, and engineering‑friendly data views to support testing, validation, and presentations.
+## Project Snapshot
+- Deterministic telemetry replay for reproducible demos
+- Coherent mission log stream with realistic navigation changes
+- AI detection playback with operator‑style overlays
+- Map visualization powered by Leaflet + OpenStreetMap
 
-## Scope
-- Frontend dashboard only (HTML/CSS/JS)
-- Deterministic replay datasets for repeatable demos
-- Leaflet + OpenStreetMap for map visualization
+## Data Modes
+**Replay (Sensors Tab)**
+- Deterministic dataset with repeatable cycles
+- Clearly labeled `data_mode: replay`
 
-## Attribution
-This repository represents a **KFUPM senior graduation project** and is maintained as a capstone portfolio artifact.
+**Coherent Stream (Logs Tab)**
+- Large, believable log stream for demo realism
+- Smooth transitions in heading, speed, depth, and battery
 
-**Author:** Zahid Alabadllah — the sole Computer Science student on the team. 
+## Tech Stack
+- HTML, CSS, JavaScript (no backend required)
+- Leaflet + OpenStreetMap for mapping
+
+## Author
+**Zahid Alabadllah** — the sole Computer Science student on the team.
+
+## Notes
+This repository is maintained as a capstone portfolio artifact for a KFUPM senior graduation project.
